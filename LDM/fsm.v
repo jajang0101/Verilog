@@ -29,7 +29,7 @@ always @(posedge clk) begin
 		end
 		S_1: begin
 			next = S_2;
-			LDM_ADDR_EN = 1;
+			LDM_ADDR_EN += 1;
 		end
 		S_2: begin
 			next = S_3;

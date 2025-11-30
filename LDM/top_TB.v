@@ -18,11 +18,8 @@
 //
 //-----------------------------------------------------------------------------
 
-`timescale 1ps / 1ps
+`timescale 1ns / 1ps
 
-//{{ Section below this comment is automatically maintained
-//    and may be overwritten
-//{module {top_TB}}
 
 module top_TB ();
 
@@ -37,18 +34,15 @@ top u0 (clk, rstn, PIXEL_DATA_256, PIXEL_DATA_EN, LDM_CLK, LDM_ADDR_EN, LDM_ADDR
 
 initial begin
 	clk = 1'b0;
-	forever #10 clk = ~clk;	
+	forever #1 clk = ~clk;	
 end
 initial begin
 	rstn = 1'b0;
 	PIXEL_DATA_256 = 256'hffff_7fff_3fff_1fff_0fff_07ff_03ff_01ff_00ff_007f_003f_001f_000f_0007_0003_0001;
 	PIXEL_DATA_EN = 1'b0;
-	#10 rstn = 1'b1;
-	#10 PIXEL_DATA_EN = 1'b1;
-	#10 PIXEL_DATA_EN = 1'b0;
+	#1 rstn = 1'b1;
+	#2 PIXEL_DATA_EN = 1'b1;
+	#1 PIXEL_DATA_EN = 1'b0;
 end
-//}} End of automatically maintained section
-
-// Enter your statements here //
 
 endmodule
